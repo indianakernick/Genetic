@@ -14,4 +14,7 @@
 template <typename Allele>
 using Chromosome = std::vector<Allele>;
 
+template <typename Chromosome>
+using Allele = typename Chromosome::value_type;
+
 #endif
