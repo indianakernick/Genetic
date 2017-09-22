@@ -10,7 +10,7 @@
 #define population_hpp
 
 #include <vector>
-#include <random>
+#include "random.hpp"
 #include "chromosome.hpp"
 
 template <typename Chromosome>
@@ -22,9 +22,9 @@ Population<Chromosome> makePopulation(const size_t size) {
 }
 
 template <typename Chromosome>
-void initRandom(Population<Chromosome> &pop, const Allele<Chromosome> seed) {
-  std::mt19937_64 gen(seed);
-  std::uniform_int_distribution<Allele<Chromosome>> dist;
+void initRandom(Population<Chromosome> &pop, const Seed seed) {
+  Generator gen(seed);
+  Distribution<Allele<Chromosome>> dist;
   for (Chromosome &c : pop) {
     for (Allele<Chromosome> &a : c) {
       a = dist(gen);
