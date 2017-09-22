@@ -9,12 +9,15 @@
 #ifndef chromosome_hpp
 #define chromosome_hpp
 
-#include <vector>
+#include <array>
 
-template <typename Allele>
-using Chromosome = std::vector<Allele>;
+template <typename Allele, size_t LENGTH>
+using Chromosome = std::array<Allele, LENGTH>;
 
 template <typename Chromosome>
 using Allele = typename Chromosome::value_type;
+
+template <typename Chromosome>
+constexpr size_t LENGTH = std::tuple_size<Chromosome>::value;
 
 #endif

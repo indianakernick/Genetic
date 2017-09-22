@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		45DE9FE81F75221000B1DA72 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45DE9FE71F75221000B1DA72 /* main.cpp */; };
 		45DE9FF01F7523A700B1DA72 /* chromosome.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45DE9FEE1F7523A700B1DA72 /* chromosome.cpp */; };
+		45DE9FF31F7525EE00B1DA72 /* population.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45DE9FF11F7525EE00B1DA72 /* population.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +29,8 @@
 		45DE9FE71F75221000B1DA72 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		45DE9FEE1F7523A700B1DA72 /* chromosome.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = chromosome.cpp; sourceTree = "<group>"; };
 		45DE9FEF1F7523A700B1DA72 /* chromosome.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = chromosome.hpp; sourceTree = "<group>"; };
+		45DE9FF11F7525EE00B1DA72 /* population.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = population.cpp; sourceTree = "<group>"; };
+		45DE9FF21F7525EE00B1DA72 /* population.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = population.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +66,8 @@
 				45DE9FE71F75221000B1DA72 /* main.cpp */,
 				45DE9FEE1F7523A700B1DA72 /* chromosome.cpp */,
 				45DE9FEF1F7523A700B1DA72 /* chromosome.hpp */,
+				45DE9FF11F7525EE00B1DA72 /* population.cpp */,
+				45DE9FF21F7525EE00B1DA72 /* population.hpp */,
 			);
 			path = Genetic;
 			sourceTree = "<group>";
@@ -126,6 +131,7 @@
 			files = (
 				45DE9FE81F75221000B1DA72 /* main.cpp in Sources */,
 				45DE9FF01F7523A700B1DA72 /* chromosome.cpp in Sources */,
+				45DE9FF31F7525EE00B1DA72 /* population.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,6 +230,15 @@
 		45DE9FEC1F75221000B1DA72 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-Wall",
+					"-Wextra",
+					"-Weffc++",
+					"-Wpedantic",
+					"-Wextra-semi",
+					"-std=c++1z",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -231,6 +246,15 @@
 		45DE9FED1F75221000B1DA72 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-Wall",
+					"-Wextra",
+					"-Weffc++",
+					"-Wpedantic",
+					"-Wextra-semi",
+					"-std=c++1z",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
