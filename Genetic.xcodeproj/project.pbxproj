@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		45DE9FE81F75221000B1DA72 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45DE9FE71F75221000B1DA72 /* main.cpp */; };
+		45DE9FF01F7523A700B1DA72 /* chromosome.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45DE9FEE1F7523A700B1DA72 /* chromosome.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		45DE9FE41F75221000B1DA72 /* Genetic */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Genetic; sourceTree = BUILT_PRODUCTS_DIR; };
 		45DE9FE71F75221000B1DA72 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		45DE9FEE1F7523A700B1DA72 /* chromosome.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = chromosome.cpp; sourceTree = "<group>"; };
+		45DE9FEF1F7523A700B1DA72 /* chromosome.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = chromosome.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				45DE9FE71F75221000B1DA72 /* main.cpp */,
+				45DE9FEE1F7523A700B1DA72 /* chromosome.cpp */,
+				45DE9FEF1F7523A700B1DA72 /* chromosome.hpp */,
 			);
 			path = Genetic;
 			sourceTree = "<group>";
@@ -120,6 +125,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45DE9FE81F75221000B1DA72 /* main.cpp in Sources */,
+				45DE9FF01F7523A700B1DA72 /* chromosome.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
