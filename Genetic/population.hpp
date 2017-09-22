@@ -23,7 +23,7 @@ Population<Chromosome> makePopulation(const size_t size) {
 }
 
 template <typename Chromosome>
-void initRandom(Population<Chromosome> &pop, const Seed seed) {
+Seed initRandom(Population<Chromosome> &pop, const Seed seed) {
   Generator gen(seed);
   Distribution<Allele<Chromosome>> dist;
   for (Chromosome &c : pop) {
@@ -31,6 +31,7 @@ void initRandom(Population<Chromosome> &pop, const Seed seed) {
       a = dist(gen);
     }
   }
+  return gen();
 }
 
 template <typename Chromosome>
