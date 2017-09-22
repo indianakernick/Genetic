@@ -10,6 +10,7 @@
 #define population_hpp
 
 #include <vector>
+#include <algorithm>
 #include "random.hpp"
 #include "chromosome.hpp"
 
@@ -30,6 +31,18 @@ void initRandom(Population<Chromosome> &pop, const Seed seed) {
       a = dist(gen);
     }
   }
+}
+
+template <typename Chromosome>
+void initConstant(Population<Chromosome> &pop, const Allele<Chromosome> allele) {
+  Chromosome chromosome;
+  std::uninitialized_fill(chromosome.begin(), chromosome.end(), allele);
+  initConstant(pop, chromosome);
+}
+
+template <typename Chromosome>
+void initConstant(Population<Chromosome> &pop, const Chromosome chromosome) {
+  std::fill(pop.begin(), pop.end(), chromosome);
 }
 
 #endif
