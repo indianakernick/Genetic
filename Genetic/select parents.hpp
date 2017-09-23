@@ -1,13 +1,13 @@
 //
-//  parent.hpp
+//  select parents.hpp
 //  Genetic
 //
 //  Created by Indi Kernick on 22/9/17.
 //  Copyright © 2017 Indi Kernick. All rights reserved.
 //
 
-#ifndef parent_hpp
-#define parent_hpp
+#ifndef select_parents_hpp
+#define select_parents_hpp
 
 #include <cassert>
 #include "population.hpp"
@@ -44,17 +44,14 @@ Seed copyRandomFitest(
 ///Copies the top fitest individuals from the population
 template <typename Chromosome, typename Fitness>
 void copyFitest(
-  Population<Chromosome> &fitest,
+  Population<Chromosome> &parents,
   const Population<Chromosome> &population,
   const std::vector<Fitness> &fitnesses,
   std::vector<size_t> &order
 ) {
-  assert(fitest.size() < population.size());
+  assert(parents.size() < population.size());
   assert(population.size() == fitnesses.size());
-  
-  if (order.size() != population.size()) {
-    order.resize(population.size());
-  }
+  assert(population.size() == order.size());
 
   //order is a vector of indicies onto population
   //order is sorted by fitness in decending order
@@ -64,9 +61,39 @@ void copyFitest(
   std::sort(order.begin(), order.end(), [&fitnesses] (const size_t l, const size_t r) {
     return fitnesses[l] > fitnesses[r];
   });
-  for (size_t c = 0; c != fitest.size(); ++c) {
-    fitest[c] = population[order[c]];
+  for (size_t c = 0; c != parents.size(); ++c) {
+    parents[c] = population[order[c]];
   }
+}
+
+///Randomly selects some individuals and copies the fitest of them
+template <typename Chromosome, typename Fitness>
+Seed copyTournament(
+  Population<Chromosome> &parents,
+  const Population<Chromosome> &population,
+  const std::vector<Fitness> &fitnesses,
+  const size_t size,
+  const Seed seed
+) {
+  assert(parents.size() < population.size());
+  assert(population.size() == fitnesses.size());
+  assert(size > 0);
+  
+  Generator gen(seed);
+  std::uniform_int_distribution<size_t> dist;
+  
+  for (Chromosome &p : parents) {
+    size_t fitest = dist(gen);
+    for (size_t s = 1; s != size; ++s) {
+      const size_t nextFitest = dist(gen);
+      if (fitnesses[nextFitest] > fitnesses[fitest]) {
+        fitest = nextFitest;
+      }
+    }
+    p = population[fitest];
+  }
+  
+  return gen();
 }
 
 #endif
