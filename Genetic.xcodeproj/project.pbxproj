@@ -14,6 +14,7 @@
 		45DE9FF91F75402700B1DA72 /* select parents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45DE9FF71F75402700B1DA72 /* select parents.cpp */; };
 		45DE9FFC1F75E32B00B1DA72 /* crossover.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45DE9FFA1F75E32A00B1DA72 /* crossover.cpp */; };
 		45DE9FFF1F75E85300B1DA72 /* mutate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45DE9FFD1F75E85300B1DA72 /* mutate.cpp */; };
+		45DEA0021F75F20B00B1DA72 /* fitness.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45DEA0001F75F20B00B1DA72 /* fitness.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,6 +44,8 @@
 		45DE9FFB1F75E32B00B1DA72 /* crossover.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = crossover.hpp; sourceTree = "<group>"; };
 		45DE9FFD1F75E85300B1DA72 /* mutate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mutate.cpp; sourceTree = "<group>"; };
 		45DE9FFE1F75E85300B1DA72 /* mutate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mutate.hpp; sourceTree = "<group>"; };
+		45DEA0001F75F20B00B1DA72 /* fitness.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fitness.cpp; sourceTree = "<group>"; };
+		45DEA0011F75F20B00B1DA72 /* fitness.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = fitness.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +91,8 @@
 				45DE9FFB1F75E32B00B1DA72 /* crossover.hpp */,
 				45DE9FFD1F75E85300B1DA72 /* mutate.cpp */,
 				45DE9FFE1F75E85300B1DA72 /* mutate.hpp */,
+				45DEA0001F75F20B00B1DA72 /* fitness.cpp */,
+				45DEA0011F75F20B00B1DA72 /* fitness.hpp */,
 			);
 			path = Genetic;
 			sourceTree = "<group>";
@@ -149,6 +154,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45DEA0021F75F20B00B1DA72 /* fitness.cpp in Sources */,
 				45DE9FF91F75402700B1DA72 /* select parents.cpp in Sources */,
 				45DE9FF61F752C0200B1DA72 /* random.cpp in Sources */,
 				45DE9FE81F75221000B1DA72 /* main.cpp in Sources */,
