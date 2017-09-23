@@ -54,7 +54,7 @@ Seed uniformCrossover(
   const Seed seed
 ) {
   Generator gen(seed);
-  std::uniform_int_distribution<bool> dist;
+  Distribution<bool> dist;
   
   for (size_t i = 0; i != LENGTH; ++i) {
     if (dist(gen)) {

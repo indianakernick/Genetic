@@ -80,7 +80,7 @@ Seed copyTournament(
   assert(size > 0);
   
   Generator gen(seed);
-  std::uniform_int_distribution<size_t> dist;
+  Distribution<size_t> dist;
   
   for (Chromosome &p : parents) {
     size_t fitest = dist(gen);
