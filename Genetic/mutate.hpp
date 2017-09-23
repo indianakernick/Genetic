@@ -37,8 +37,8 @@ Seed randomReset(
 template <typename Allele, size_t LENGTH>
 Seed randomAdd(
   Chromosome<Allele, LENGTH> &chromosome,
-  const float prob,
   const Allele addMag,
+  const float prob,
   const Seed seed
 ) {
   Generator gen(seed);
