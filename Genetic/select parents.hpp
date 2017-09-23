@@ -41,29 +41,18 @@ Seed copyRandomFitest(
   return gen();
 }
 
-///Copies the top fitest individuals from the population
+///Copies the top fitest individuals from the population. (Assumes the
+///population has been sorted)
 template <typename Chromosome, typename Fitness>
 void copyFitest(
   Population<Chromosome> &parents,
   const Population<Chromosome> &population,
-  const std::vector<Fitness> &fitnesses,
-  std::vector<size_t> &order
+  const std::vector<Fitness> &fitnesses
 ) {
   assert(parents.size() < population.size());
   assert(population.size() == fitnesses.size());
-  assert(population.size() == order.size());
-
-  //order is a vector of indicies onto population
-  //order is sorted by fitness in decending order
-  //the index at the beginning of order refers to
-  //the fitest chromosome in the population
-  std::iota(order.begin(), order.end(), 0);
-  std::sort(order.begin(), order.end(), [&fitnesses] (const size_t l, const size_t r) {
-    return fitnesses[l] > fitnesses[r];
-  });
-  for (size_t c = 0; c != parents.size(); ++c) {
-    parents[c] = population[order[c]];
-  }
+  
+  std::copy(population.cbegin(), population.cbegin() + parents.size(), parents.begin());
 }
 
 ///Randomly selects some individuals and copies the fitest of them

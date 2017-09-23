@@ -24,4 +24,41 @@ void calcFitness(
   }
 }
 
+template <typename Chromosome, typename Fitness>
+void fitnessSort(Population<Chromosome> &pop, std::vector<Fitness> &fitnesses) {
+  //@TODO this feels really inefficient 3n + n*log(n)
+  //implement quicksort by hand
+  
+  assert(pop.size() == fitnesses.size());
+  
+  static std::vector<size_t> order;
+  static std::vector<bool> isSorted;
+  if (order.size() < pop.size()) {
+    order.resize(pop.size());
+    isSorted.resize(pop.size());
+  }
+  std::iota(order.begin(), order.begin() + pop.size(), 0);
+  std::fill(isSorted.begin(), isSorted.end(), false);
+  
+  std::sort(order.begin(), order.begin() + pop.size(), [&fitnesses] (size_t a, size_t b) {
+    return fitnesses[a] > fitnesses[b];
+  });
+  
+  for (size_t i = 0; i != pop.size(); ++i) {
+    if (isSorted[i]) {
+      continue;
+    }
+    isSorted[i] = true;
+    size_t currentPos = i;
+    size_t sortedPos = order[i];
+    while (currentPos != sortedPos) {
+      std::swap(pop[currentPos], pop[sortedPos]);
+      std::swap(fitnesses[currentPos], fitnesses[sortedPos]);
+      isSorted[sortedPos] = true;
+      currentPos = sortedPos;
+      sortedPos = order[sortedPos];
+    }
+  }
+}
+
 #endif
