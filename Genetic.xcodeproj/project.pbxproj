@@ -12,6 +12,7 @@
 		45DE9FF31F7525EE00B1DA72 /* population.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45DE9FF11F7525EE00B1DA72 /* population.cpp */; };
 		45DE9FF61F752C0200B1DA72 /* random.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45DE9FF41F752C0200B1DA72 /* random.cpp */; };
 		45DE9FF91F75402700B1DA72 /* select parents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45DE9FF71F75402700B1DA72 /* select parents.cpp */; };
+		45DE9FFC1F75E32B00B1DA72 /* crossover.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45DE9FFA1F75E32A00B1DA72 /* crossover.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +38,8 @@
 		45DE9FF51F752C0200B1DA72 /* random.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = random.hpp; sourceTree = "<group>"; };
 		45DE9FF71F75402700B1DA72 /* select parents.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "select parents.cpp"; sourceTree = "<group>"; };
 		45DE9FF81F75402700B1DA72 /* select parents.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "select parents.hpp"; sourceTree = "<group>"; };
+		45DE9FFA1F75E32A00B1DA72 /* crossover.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = crossover.cpp; sourceTree = "<group>"; };
+		45DE9FFB1F75E32B00B1DA72 /* crossover.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = crossover.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +81,8 @@
 				45DE9FF51F752C0200B1DA72 /* random.hpp */,
 				45DE9FF71F75402700B1DA72 /* select parents.cpp */,
 				45DE9FF81F75402700B1DA72 /* select parents.hpp */,
+				45DE9FFA1F75E32A00B1DA72 /* crossover.cpp */,
+				45DE9FFB1F75E32B00B1DA72 /* crossover.hpp */,
 			);
 			path = Genetic;
 			sourceTree = "<group>";
@@ -143,6 +148,7 @@
 				45DE9FF61F752C0200B1DA72 /* random.cpp in Sources */,
 				45DE9FE81F75221000B1DA72 /* main.cpp in Sources */,
 				45DE9FF01F7523A700B1DA72 /* chromosome.cpp in Sources */,
+				45DE9FFC1F75E32B00B1DA72 /* crossover.cpp in Sources */,
 				45DE9FF31F7525EE00B1DA72 /* population.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
