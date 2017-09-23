@@ -19,7 +19,7 @@ using Population = std::vector<Chromosome>;
 
 template <typename Chromosome>
 Population<Chromosome> makePopulation(const size_t size) {
-  return {size};
+  return Population<Chromosome>(size);
 }
 
 template <typename Chromosome>
