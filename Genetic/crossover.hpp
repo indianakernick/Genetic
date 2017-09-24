@@ -51,13 +51,14 @@ template <typename Allele, size_t LENGTH>
 Seed uniformCrossover(
   Chromosome<Allele, LENGTH> &a,
   Chromosome<Allele, LENGTH> &b,
+  const float prob,
   const Seed seed
 ) {
   Generator gen(seed);
-  Distribution<bool> dist;
+  Distribution<float> dist(0.0f, 1.0f);
   
   for (size_t i = 0; i != LENGTH; ++i) {
-    if (dist(gen)) {
+    if (dist(gen) < prob) {
       std::swap(a[i], b[i]);
     }
   }

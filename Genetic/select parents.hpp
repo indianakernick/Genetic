@@ -41,8 +41,8 @@ Seed copyRandomFitest(
   return gen();
 }
 
-///Copies the top fitest individuals from the population. (Assumes the
-///population has been sorted)
+///Copies the top fitest individuals from the population. Assumes the
+///population has been sorted
 template <typename Chromosome, typename Fitness>
 void copyFitest(
   Population<Chromosome> &parents,
@@ -83,6 +83,16 @@ Seed copyTournament(
   }
   
   return gen();
+}
+
+///Replaces the weakest individuals in the population with the crossed over and
+///mutated parents. Assumes the population has been sorted.
+template <typename Chromosome>
+void replaceWeakest(
+  Population<Chromosome> &population,
+  const Population<Chromosome> &parents
+) {
+  std::copy(parents.cbegin(), parents.cend(), population.end() - parents.size());
 }
 
 #endif

@@ -19,7 +19,7 @@ Seed randomReset(
   const Seed seed
 ) {
   Generator gen(seed);
-  Distribution<float> probDist;
+  Distribution<float> probDist(0.0f, 1.0f);
   Distribution<Allele> alleleDist;
   
   for (Allele &a : chromosome) {
@@ -42,7 +42,7 @@ Seed randomAdd(
   const Seed seed
 ) {
   Generator gen(seed);
-  Distribution<float> probDist;
+  Distribution<float> probDist(0.0f, 1.0f);
   Distribution<Allele> alleleDist(-addMag, addMag);
   
   for (Allele &a : chromosome) {
