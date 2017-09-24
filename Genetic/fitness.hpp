@@ -9,6 +9,7 @@
 #ifndef fitness_hpp
 #define fitness_hpp
 
+#include <cassert>
 #include "population.hpp"
 
 template <typename Chromosome, typename Fitness, typename FitnessFun>
@@ -24,41 +25,58 @@ void calcFitness(
   }
 }
 
+template <typename Fitness>
+Fitness median(const Fitness a, const Fitness b, const Fitness c) {
+  //https://stackoverflow.com/a/19027761
+  return std::max(std::min(a, b), std::min(std::max(a, b), c));
+}
+
+template <typename PopIter, typename FitIter>
+void fitnessSortImpl(
+  const PopIter popBegin,
+  const FitIter fitBegin,
+  const size_t size
+) {
+  if (size < 2) {
+    return;
+  } else if (size == 2) {
+    if (fitBegin[0] < fitBegin[1]) {
+      std::swap(fitBegin[0], fitBegin[1]);
+      std::swap(popBegin[0], popBegin[1]);
+    }
+    return;
+  }
+
+  const auto pivot = median(*fitBegin, fitBegin[size / 2], fitBegin[size - 1]);
+  FitIter left = fitBegin;
+  FitIter right = fitBegin + size - 1;
+  
+  while (left <= right) {
+    //descending order
+    while (*left > pivot) {
+      ++left;
+    }
+    while (*right < pivot) {
+      --right;
+    }
+    if (left <= right) {
+      std::swap(*left, *right);
+      //the reason why I can't just use std::sort
+      std::swap(popBegin[left - fitBegin], popBegin[right - fitBegin]);
+      ++left;
+      --right;
+    }
+  }
+  
+  const size_t between = (left - fitBegin);
+  fitnessSortImpl(popBegin, fitBegin, between);
+  fitnessSortImpl(popBegin + between, left, size - between);
+}
+
 template <typename Chromosome, typename Fitness>
 void fitnessSort(Population<Chromosome> &pop, std::vector<Fitness> &fitnesses) {
-  //@TODO this feels really inefficient 3n + n*log(n)
-  //implement quicksort by hand
-  
   assert(pop.size() == fitnesses.size());
-  
-  static std::vector<size_t> order;
-  static std::vector<bool> isSorted;
-  if (order.size() < pop.size()) {
-    order.resize(pop.size());
-    isSorted.resize(pop.size());
-  }
-  std::iota(order.begin(), order.begin() + pop.size(), 0);
-  std::fill(isSorted.begin(), isSorted.end(), false);
-  
-  std::sort(order.begin(), order.begin() + pop.size(), [&fitnesses] (size_t a, size_t b) {
-    return fitnesses[a] > fitnesses[b];
-  });
-  
-  for (size_t i = 0; i != pop.size(); ++i) {
-    if (isSorted[i]) {
-      continue;
-    }
-    isSorted[i] = true;
-    size_t currentPos = i;
-    size_t sortedPos = order[i];
-    while (currentPos != sortedPos) {
-      std::swap(pop[currentPos], pop[sortedPos]);
-      std::swap(fitnesses[currentPos], fitnesses[sortedPos]);
-      isSorted[sortedPos] = true;
-      currentPos = sortedPos;
-      sortedPos = order[sortedPos];
-    }
-  }
+  fitnessSortImpl(pop.begin(), fitnesses.begin(), pop.size());
 }
 
 #endif
