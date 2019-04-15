@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		45BBF287205F254F0099E244 /* poly fit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45BBF285205F254F0099E244 /* poly fit.cpp */; };
 		45DE9FE81F75221000B1DA72 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45DE9FE71F75221000B1DA72 /* main.cpp */; };
 		45DE9FF01F7523A700B1DA72 /* chromosome.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45DE9FEE1F7523A700B1DA72 /* chromosome.cpp */; };
 		45DE9FF31F7525EE00B1DA72 /* population.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45DE9FF11F7525EE00B1DA72 /* population.cpp */; };
@@ -30,6 +31,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		45BBF285205F254F0099E244 /* poly fit.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "poly fit.cpp"; sourceTree = "<group>"; };
+		45BBF286205F254F0099E244 /* poly fit.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "poly fit.hpp"; sourceTree = "<group>"; };
 		45DE9FE41F75221000B1DA72 /* Genetic */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Genetic; sourceTree = BUILT_PRODUCTS_DIR; };
 		45DE9FE71F75221000B1DA72 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		45DE9FEE1F7523A700B1DA72 /* chromosome.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = chromosome.cpp; sourceTree = "<group>"; };
@@ -93,6 +96,8 @@
 				45DE9FFE1F75E85300B1DA72 /* mutate.hpp */,
 				45DEA0001F75F20B00B1DA72 /* fitness.cpp */,
 				45DEA0011F75F20B00B1DA72 /* fitness.hpp */,
+				45BBF285205F254F0099E244 /* poly fit.cpp */,
+				45BBF286205F254F0099E244 /* poly fit.hpp */,
 			);
 			path = Genetic;
 			sourceTree = "<group>";
@@ -162,6 +167,7 @@
 				45DE9FFC1F75E32B00B1DA72 /* crossover.cpp in Sources */,
 				45DE9FF31F7525EE00B1DA72 /* population.cpp in Sources */,
 				45DE9FFF1F75E85300B1DA72 /* mutate.cpp in Sources */,
+				45BBF287205F254F0099E244 /* poly fit.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +266,7 @@
 		45DE9FEC1F75221000B1DA72 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = /usr/local/include;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-Wall",
@@ -276,6 +283,9 @@
 		45DE9FED1F75221000B1DA72 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = ENABLE_PROFILER;
+				HEADER_SEARCH_PATHS = /usr/local/include;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-Wall",
@@ -308,6 +318,7 @@
 				45DE9FED1F75221000B1DA72 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
