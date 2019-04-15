@@ -11,6 +11,7 @@
 
 #include <cassert>
 #include "population.hpp"
+#include <Simpleton/Utils/profiler.hpp>
 
 template <typename Chromosome, typename Fitness, typename FitnessFun>
 void calcFitness(
@@ -18,6 +19,8 @@ void calcFitness(
   std::vector<Fitness> &fitnesses,
   FitnessFun &&fun
 ) {
+  PROFILE(calcFitness);
+
   assert(pop.size() == fitnesses.size());
   
   for (size_t i = 0; i != pop.size(); ++i) {
@@ -75,6 +78,8 @@ void fitnessSortImpl(
 
 template <typename Chromosome, typename Fitness>
 void fitnessSort(Population<Chromosome> &pop, std::vector<Fitness> &fitnesses) {
+  PROFILE(fitnessSort);
+
   assert(pop.size() == fitnesses.size());
   fitnessSortImpl(pop.begin(), fitnesses.begin(), pop.size());
 }

@@ -11,6 +11,7 @@
 
 #include "random.hpp"
 #include "chromosome.hpp"
+#include <Simpleton/Utils/profiler.hpp>
 
 template <typename Allele, size_t LENGTH>
 Seed randomReset(
@@ -18,13 +19,14 @@ Seed randomReset(
   const float prob,
   const Seed seed
 ) {
+  PROFILE(randomReset);
+  
   Generator gen(seed);
   Distribution<float> probDist(0.0f, 1.0f);
   Distribution<Allele> alleleDist;
   
   for (Allele &a : chromosome) {
-    //always invoke Generator::operator() the same number of times to
-    //keep execution deterministic
+    //always invoke Generator::operator() the same number of times
     const Allele randAllele = alleleDist(gen);
     if (probDist(gen) < prob) {
       a = randAllele;
@@ -41,6 +43,8 @@ Seed randomAdd(
   const float prob,
   const Seed seed
 ) {
+  PROFILE(randomAdd);
+  
   Generator gen(seed);
   Distribution<float> probDist(0.0f, 1.0f);
   Distribution<Allele> alleleDist(-addMag, addMag);

@@ -13,6 +13,7 @@
 #include <algorithm>
 #include "random.hpp"
 #include "chromosome.hpp"
+#include <Simpleton/Utils/profiler.hpp>
 
 template <typename Chromosome>
 using Population = std::vector<Chromosome>;
@@ -24,6 +25,8 @@ Population<Chromosome> makePopulation(const size_t size) {
 
 template <typename Chromosome>
 Seed initRandom(Population<Chromosome> &pop, const Seed seed) {
+  PROFILE(initRandom);
+
   Generator gen(seed);
   Distribution<Allele<Chromosome>> dist;
   for (Chromosome &c : pop) {

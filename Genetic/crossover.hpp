@@ -12,6 +12,7 @@
 #include <cassert>
 #include "random.hpp"
 #include "chromosome.hpp"
+#include <Simpleton/Utils/profiler.hpp>
 
 template <typename Allele, size_t LENGTH>
 void oneCrossover(
@@ -19,6 +20,8 @@ void oneCrossover(
   Chromosome<Allele, LENGTH> &b,
   const size_t point
 ) {
+  PROFILE(oneCrossover);
+
   assert(point < LENGTH);
 
   for (size_t i = point; i != LENGTH; ++i) {
@@ -32,6 +35,8 @@ void multiCrossover(
   Chromosome<Allele, LENGTH> &b,
   const std::array<size_t, POINTS> &points
 ) {
+  PROFILE(multiCrossover);
+
   static_assert(POINTS < LENGTH);
   
   bool swap = false;
@@ -54,6 +59,8 @@ Seed uniformCrossover(
   const float prob,
   const Seed seed
 ) {
+  PROFILE(uniformCrossover);
+
   Generator gen(seed);
   Distribution<float> dist(0.0f, 1.0f);
   

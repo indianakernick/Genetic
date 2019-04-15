@@ -11,8 +11,9 @@
 
 #include <cassert>
 #include "population.hpp"
+#include <Simpleton/Utils/profiler.hpp>
 
-///Randomly copies individuals with fitter individuals more likely to be copied
+///Randomly copies individuals. Fitter individuals are more likely to be copied
 template <typename Chromosome, typename Fitness>
 Seed copyRandomFitest(
   Population<Chromosome> &parents,
@@ -20,6 +21,8 @@ Seed copyRandomFitest(
   const std::vector<Fitness> &fitnesses,
   const Seed seed
 ) {
+  PROFILE(copyRandomFitest);
+
   assert(parents.size() <= population.size());
   assert(population.size() == fitnesses.size());
   
@@ -49,6 +52,8 @@ void copyFitest(
   const Population<Chromosome> &population,
   const std::vector<Fitness> &fitnesses
 ) {
+  PROFILE(copyFitest);
+
   assert(parents.size() < population.size());
   assert(population.size() == fitnesses.size());
   
@@ -64,6 +69,8 @@ Seed copyTournament(
   const size_t size,
   const Seed seed
 ) {
+  PROFILE(copyTournament);
+
   assert(parents.size() < population.size());
   assert(population.size() == fitnesses.size());
   assert(size > 0);
@@ -92,6 +99,7 @@ void replaceWeakest(
   Population<Chromosome> &population,
   const Population<Chromosome> &parents
 ) {
+  PROFILE(replaceWeakest);
   std::copy(parents.cbegin(), parents.cend(), population.end() - parents.size());
 }
 
